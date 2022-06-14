@@ -1,0 +1,41 @@
+<!--
+SAMPLE ONlY - Use YOUR OWN param values, as provided by Taboola.
+-->
+
+<!--
+Taboola modules served via GAM are NOT responsive.
+Style the <div> to match your needs.
+-->
+<div id="taboola-slot" style="width: 300px">
+</div>
+
+<!-- Fill in YOUR OWN param values, as provided by Taboola -->
+<script type="text/javascript">
+   window._taboola = window._taboola || [];
+   _taboola.push({article:'auto', url : top.location.href}); // for a page_type of 'article', use 'article:'auto'
+   _taboola.push({listenTo: 'render', handler : function(){
+   var wdgc = document.getElementById('taboola-slot'); // Pass the ID of the <div> container (see above).
+     window.frameElement.width = "" + wdgc.scrollWidth;
+     window.frameElement.height = "" + wdgc.scrollHeight;
+   }});
+
+  // (Optional) Code snippet for tracking clicks
+  // Generates an <img> pixel that uses the GAM URL for tracking clicks.
+  _taboola.push({
+    listenTo: 'click',
+    handler: function (e) {
+      var i = document.createElement("img");
+      i.src = "%%CLICK_URL_ESC%%";
+    }
+  });
+  
+   _taboola.push({
+     mode: 'recos-mid-article',
+     container: 'taboola-slot', // The ID of the <div> container (see above).
+     placement: 'Below Article Thumbnails',
+     target_type: 'mix'
+   });
+</script>
+
+<!--  Fill in your Publisher ID, as provided by Taboola -->
+<script src= '//cdn.taboola.com/libtrc/betterbytheminute/loader.js'></script>
